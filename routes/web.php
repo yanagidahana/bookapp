@@ -1,6 +1,6 @@
 <?php
 
-use APP\Book;
+use App\Book;
 use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +14,23 @@ use Illuminate\Http\Request;
 */
 
 Route::get('/', function () {
-    return view('books');
+    // データの取得
+    $books = Book::all();
+    return view('books', ['books' => $books]);
 });
+
+
+Route::post('/book', function(Request $request) {
+    $validator = Validator::make($request ->all(),[
+        'name' => 'required|max:255',
+    ]);
+
+    $book = new Book;
+    $book->title = $request->name;
+    $book->save();
+
+    return redirect('/');
+});
+
+
+
