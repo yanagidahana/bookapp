@@ -38,6 +38,7 @@ Route::post('/book', function(Request $request) {
     return redirect('/');
 });
 
+
 Route::delete('/book/{book}',function(Book $book){
     $book->delete();
 
@@ -45,3 +46,7 @@ Route::delete('/book/{book}',function(Book $book){
 });
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
