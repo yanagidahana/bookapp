@@ -19,6 +19,12 @@ Route::get('/', function () {
     return view('books', ['books' => $books]);
 });
 
+// if ($validator->fails()) {
+//     return redirect('/')
+//         ->withInput()
+//         ->withErrors($validator);    
+// } 
+
 
 Route::post('/book', function(Request $request) {
     $validator = Validator::make($request ->all(),[
