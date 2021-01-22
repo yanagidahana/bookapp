@@ -17,7 +17,9 @@ Route::get('/', function () {
     // データの取得
     $books = Book::all();
     return view('books', ['books' => $books]);
-});
+})->middleware('auth');
+
+
 
 // if ($validator->fails()) {
 //     return redirect('/')
